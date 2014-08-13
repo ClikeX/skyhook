@@ -1,0 +1,70 @@
+require 'net/http'
+require 'json'
+
+class S_Skyhook
+
+    ##declarations##
+    @@steamapi = "api.steampowered.com"
+    @@format = 'json'
+
+    ##methods##
+    def setFormat(format)
+      @@format = format
+    end
+    def getAppList
+      response = Net::HTTP.get_response(@@steamapi,'/ISteamApps/GetAppList/v0001/')
+      return response.body
+    end
+    def getPlayerStats(key, appid, steamid)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamUserStats/GetUserStatsForGame/v0002/?appid=' + appid + '&key=' + key + '&steamid=' + steamid)
+      return response.body
+    end
+    def getNewsForApp(appid, count, maxlength)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamNews/GetNewsForApp/v0002/?appid='+ appid + '&count=' + count + '&maxlength=' +maxlength + '&format=' + @@format)
+      return response.body
+    #  http://api.cdsteampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json
+    end
+    def getGlobalAchievementPercentagesForApp(appid)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid='+ appid + '&format=' + @@format)
+      return response.body
+    end
+    ##
+
+    ##
+    ##broken##
+    def getGlobalStatsForGame(appid, count)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamUserStats/GetGlobalStatsForGame/v0001/?format='+ @@format + '&appid=' + appid + '&count=' + count + '/name[0]=global.map.emp_isle' )
+      return response.body
+    end
+    ##broken##
+    ##
+    ##
+    def getPlayerSummaries(key, steamid)
+        response = Net::HTTP.get_response(@@steamapi, '/ISteamUser/GetPlayerSummaries/v0002/?key=' +key+ '&steamids=' + steamid + '&format=' + @@format)
+      return response.body
+    end
+    def getFriendlist(key, steamid, relation)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamUser/GetFriendList/v0001/?key=' + key + '&steamid=' + steamid + '&relationship=' + relation)
+      return response.body
+    end
+    def getPlayerAchievements(key, appid, steamid)
+      response = Net::HTTP.get_response(@@steamapi, '/ISteamUserStats/GetPlayerAchievements/v0001/?appid=+' + appid + '&key=' + key + '&steamid=' + steamid)
+      return response.body
+    end
+    def getOwnedGames(key, steamid)
+      response = Net::HTTP.get_response(@@steamapi,'/IPlayerService/GetOwnedGames/v0001/?key=' + key + '&steamid=' + steamid + '&format=' + @@format)
+      return response.body
+    end
+    def getRecentlyPlayedGames(key, steamid)
+      response = Net::HTTP.get_response(@@steamapi, '/IPlayerService/GetRecentlyPlayedGames/v0001/?key=' + key + '&steamid=' + steamid + '&format=' + @@format)
+      return response.body
+    end
+    def isPlayingSharedGame(key, appid, steamid)
+      response = Net::HTTP.get_response(@@steamapi, '/IPlayerService/IsPlayingSharedGame/v0001/?key=' + key + '&steamid=' + steamid + '&appid_playing=' + appid + '&format=' + @@format)
+      return response.body
+    end
+    def callingServiceInterface(api, key ,json)
+      response = Net::HTTP.get_response(@@steamapi, api + '?key=' + key + '&format=' + @@format + '&input_json=' + json)
+      return response.body
+    end
+end
