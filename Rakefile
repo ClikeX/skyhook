@@ -1,3 +1,3 @@
-task :console do
-
+task :default do
+  true
 end
