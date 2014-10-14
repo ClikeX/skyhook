@@ -40,9 +40,7 @@ module Skyhook
   end
 
   def player_stats(appid, steamid)
-    if steamid.is_a?(String) then
-      steamid = resolve_vanity(steamid)
-    end
+    steamid = resolve_vanity(steamid)
 
     request("/ISteamUserStats/GetUserStatsForGame/v0002/?appid=#{appid}&key=#{key}&steamid=#{steamid}")
   end
@@ -64,7 +62,7 @@ module Skyhook
   end
 
   def resolve_vanity(vanityurl)
-    request("/ISteamUser/ResolveVanityURL/v0001/?key=#{key}&vanityurl=#{vanityurl}")["response"]["steamid"]
+    vanityurl.is_a?(String) ? request("/ISteamUser/ResolveVanityURL/v0001/?key=#{key}&vanityurl=#{vanityurl}")["response"]["steamid"] : vanityurl
   end
 
   def playing_shared(appid, steamid)
@@ -86,7 +84,7 @@ if $0 == __FILE__
   class SteamApp
     include Skyhook
 
-    def initialize(key="")
+    def initialize(key="99774A7E9486F2392DECF43C6291AF47")
       setup(key)
     end
 
@@ -94,6 +92,6 @@ if $0 == __FILE__
 
   app = SteamApp.new
 
-  puts app.player_stats(550,"ClikeX" )
+  puts app.resolve_vanity 'ClikeX'
 
 end
