@@ -1,7 +1,9 @@
 Ruby
 ====
 
-Builds
+Build
+-----
+These builds do nothing yet. I have only set them up for testing.
 
 [![Build Status](https://travis-ci.org/ClikeX/skyhook_ruby.svg?branch=develop)](https://travis-ci.org/ClikeX/skyhook_ruby)
 
