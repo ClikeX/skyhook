@@ -1,6 +1,5 @@
 module Skyhook
   class Core
-
     def self.app_list()
       request('/ISteamApps/GetAppList/v0001/')
     end
@@ -10,12 +9,12 @@ module Skyhook
     end
 
     def self.global_achievements(appid)
-      request("/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid='#{appid}'&format=#{format}")
+      request("/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=#{appid}&format=#{format}")
     end
 
     # FIXME: This has been broken since forver. Will be fixed later
-    self.def self.global_stats(appid, count)
-      request("/ISteamUserStats/GetGlobalStatsForGame/v0001/?format=#{format}&appid=#{appid}'&count='#{count}/name[0]=global.map.emp_isle")
+    def self.global_stats(appid, count)
+      request("/ISteamUserStats/GetGlobalStatsForGame/v0001/?format=#{format}&appid=#{appid}&count=#{count}/name[0]=global.map.emp_isle")
     end
 
     # User requests
