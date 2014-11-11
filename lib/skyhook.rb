@@ -1,10 +1,9 @@
 require 'net/http'
 require 'json'
-require 'addressable/uri'
 
 require 'skyhook/core'
-require 'skyhook/app'
-require 'skyhook/player'
+require 'skyhook/game'
+require 'skyhook/user'
 
 module Skyhook
   attr_accessor :format
