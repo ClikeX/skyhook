@@ -4,6 +4,7 @@ module Skyhook
     attr_reader :appid
 
     def initialize( appid, steamid = nil )
+      super
       self.appid = appid
       self.steamid = steamid
     end
