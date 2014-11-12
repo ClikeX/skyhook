@@ -10,4 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://rubygems.org/gems/skyhook'
   s.license       = 'MIT'
+  s.required_ruby_version = '~> 1.9.3'
+  s.requirements << 'ActiveSupport'
+  s.post_install_message = "Thank you for installing the Steampowered Skyhook for Ruby. Have fun!"
 end
