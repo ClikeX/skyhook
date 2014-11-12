@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A wrapper/library for the Steam web API"
   s.authors     = ["ClikeX"]
   s.email       = 'w.s.van.der.meulen@gmail.com'
-  s.files       = ["lib/skyhook.rb", "lib/skyhook/core.rb", "lib/skyhook/game.rb", "lib/skyhook/user.rb"]
+  s.files       = ["lib/skyhook.rb", "lib/skyhook/configuration.rb", "lib/skyhook/core.rb", "lib/skyhook/game.rb", "lib/skyhook/user.rb"]
   s.homepage    =
     'http://rubygems.org/gems/skyhook'
   s.license       = 'MIT'
