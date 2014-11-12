@@ -9,6 +9,6 @@ require 'skyhook/user'
 
 module Skyhook
   def self.configure( options = {} )
-    self.Configuration.configure options
+    self::Configuration.configure options
   end
 end
