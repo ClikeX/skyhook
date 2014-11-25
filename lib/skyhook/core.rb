@@ -9,13 +9,13 @@ module Skyhook
     # TODO Recreate request methods
     # TODO Put more code in the REST API
 
-    private
+    protected
     def request(uri)
       response = Net::HTTP.get_response BASE, uri
       JSON.parse response.body
     end
 
-    def rest_request(uri, options = {})
+    def service_request(uri, options = {})
       raise(ArgumentError,  'No JSON options were supplied') if options.empty?
       request("#{uri}?key=#{self.key}}&format=#{self.format}&input_json=#{options[:json]}")
     end
