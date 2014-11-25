@@ -4,8 +4,7 @@ module Skyhook
     attr_reader :steamid, :game
 
     def initialize( steamid )
-      super
-      self.steamid = steamid
+      @steamid = steamid
     end
 
     # TODO Functionality
