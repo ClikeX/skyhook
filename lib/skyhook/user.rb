@@ -1,10 +1,10 @@
 module Skyhook
   class User < Skyhook::Core
 
-    attr_reader :steamid, :game
+    attr_reader :steamid, :game, :response
 
     def initialize( steamid )
-      @steamid = steamid
+      @response = user_summaries steamid
     end
 
     # TODO Functionality
