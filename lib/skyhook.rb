@@ -1,6 +1,5 @@
-require 'net/http'
-require 'json'
 require 'active_support/all'
+require 'net/http'
 
 require 'skyhook/configuration'
 require 'skyhook/core'
