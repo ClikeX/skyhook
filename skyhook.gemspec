@@ -13,6 +13,5 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '~> 1.9.3'
   s.requirements << 'ActiveSupport'
   s.post_install_message = "Thank you for installing the Steampowered Skyhook for Ruby. Have fun!"
-  s.add_runtime_dependency 'json', '~> 1.8'
   s.add_runtime_dependency 'activesupport', '~> 4.0 '
 end
