@@ -8,7 +8,7 @@ module Skyhook
     }.freeze
 
     def api_reference
-      url = "ISteamWebAPIUtil/GetSupportedAPIList/v0001/"
+      url = "/ISteamWebAPIUtil/GetSupportedAPIList/v0001/"
 
       unless @api_key.blank?
         url << "?key=#{ self.api_key }"
@@ -19,19 +19,23 @@ module Skyhook
 
     def resolve_vanity( vanityurl )
       return vanityurl if vanityurl.is_a? Integer
-      request "ISteamUser/ResolveVanityURL/v0001/?key=#{ self.api_key }&vanityurl=#{ vanityurl }"
+      response = request "/ISteamUser/ResolveVanityURL/v0001/?key=#{ self.api_key }&vanityurl=#{ vanityurl }"
+      response["response"]["steamid"]
     end
 
     def user_summaries( steamids = [] )
       steamids = [ steamids ] unless steamids.is_a? Array
 
-      raise( ArgumentError,  'No steamids were defined' ) if steamids.empty?
+      if steamids.empty?
+        p 'No steamids were defined'
+        return false
+      end
 
-      steamids.map do |steamid|
+      steamids.map! do |steamid|
         steamid = resolve_vanity steamid
       end
 
-      request "ISteamUser/GetPlayerSummaries/v0002/?key=#{ self.api_key }&steamids=#{ steamids }"
+      request "/ISteamUser/GetPlayerSummaries/v0002/?key=#{ self.api_key }&steamids=#{ steamids }"
     end
 
     protected
