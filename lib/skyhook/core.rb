@@ -20,7 +20,7 @@ module Skyhook
     def resolve_vanity( vanityurl )
       return vanityurl if vanityurl.is_a? Integer
       response = request "/ISteamUser/ResolveVanityURL/v0001/?key=#{ self.api_key }&vanityurl=#{ vanityurl }"
-      response["response"]["steamid"]
+      response["response"]["steamid"].to_i
     end
 
     def user_summaries( steamids = [] )
@@ -36,6 +36,12 @@ module Skyhook
       end
 
       request "/ISteamUser/GetPlayerSummaries/v0002/?key=#{ self.api_key }&steamids=#{ steamids }"
+    end
+
+    def player_stats( appid, steamid )
+      steamid = resolve_vanity steamid
+
+      request "/ISteamUserStats/GetUserStatsForGame/v2/?key=#{self.api_key }&steamid=#{ steamid }&appid=#{ appid }"
     end
 
     protected

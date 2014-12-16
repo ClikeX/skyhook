@@ -6,16 +6,19 @@ module Skyhook
     attr_reader :communityvisibilitystate, :profilestate, :lastlogoff, :commentpermission
     attr_reader :primaryclanid, :timecreated, :personastateflags, :personastate
     attr_reader :loccityid, :locstatecode, :loccountrycode
-    attr_reader :response
 
     def initialize( steamid )
       set_attributes user_summaries( steamid )["response"]["players"][0]
     end
 
+    def game( appid )
+      Skyhook::Game.new appid, self
+    end
+
     private
 
     def set_attributes( response )
-      @steamid = response["steamid"]
+      @steamid = response["steamid"].to_i
       @personaname = response["personaname"]
       @communityvisibilitystate = response["communityvisibilitystate"]
       @profilestate = response["profilestate"]
