@@ -7,6 +7,7 @@ module Skyhook
       @appid = appid
       if steamid == nil
         # If steamid is not set a game should contain global data
+        set_global_attributes
       else
         if steamid.is_a? Skyhook::User
           @user = steamid
@@ -24,8 +25,9 @@ module Skyhook
       @stats = ( Hash[ response['stats'].each_slice(2).to_a ] ).deep_symbolize_keys if response['stats']
     end
 
-    def set_global_attributes( response )
+    def set_global_attributes
       #Will return a games global stats
+      raise NotImplementedError
     end
 
   end
