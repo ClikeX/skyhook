@@ -49,6 +49,14 @@ module Skyhook
       request "/ISteamUserStats/GetGlobalStatsForGame/v0001/?appidid=#{ appid }&count=#{}&name[0]=global.map.emp_isle"
     end
 
+    def owned_games( steamid, options = {} )
+      steamid = resolve_vanity steamid
+      appinfo = options[:appinfo] == nil ? false : options[:appinfo]
+      free_games = options[:free_games] == nil ? false : options[:free_games]
+
+      request "/IPlayerService/GetOwnedGames/v1/?key=#{ self.api_key }&steamid=#{ steamid }&include_appinfo='#{ appinfo }'&include_played_free_games='#{ free_games }'"
+    end
+
     protected
 
     def request( uri )
