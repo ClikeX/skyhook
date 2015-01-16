@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'skyhook'
-  s.version     = '0.3.0'
+  s.version     = '0.4.0'
   s.date        = '2014-04-28'
   s.summary     = 'Steam API wrapper/library'
   s.description = 'A wrapper/library for the Steam web API'
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/skyhook'
   s.license       = 'MIT'
 
-  s.required_ruby_version = '>= 2.1.2'
+  s.required_ruby_version = '>= 2.2.0'
 
   s.post_install_message = 'Thank you for installing the Steampowered Skyhook for Ruby. Have fun!'
 
