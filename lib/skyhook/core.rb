@@ -60,6 +60,7 @@ module Skyhook
     protected
 
     def request( uri )
+      puts "#{BASE}#{uri}" if self.debug
       response = Net::HTTP.get_response BASE, uri
       JSON.parse response.body
     end
