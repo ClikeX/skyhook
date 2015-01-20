@@ -15,6 +15,10 @@ module Skyhook
       Skyhook::Game.new appid, self
     end
 
+    def friends( relationship = :friend )
+      @friends ||= friend_list @steamid, relationship
+    end
+
     private
 
     def set_attributes( response )

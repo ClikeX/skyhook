@@ -57,6 +57,13 @@ module Skyhook
       request "/IPlayerService/GetOwnedGames/v1/?key=#{ self.api_key }&steamid=#{ steamid }&include_appinfo='#{ appinfo }'&include_played_free_games='#{ free_games }'"
     end
 
+    def friend_list( steamid, relationship )
+      steamid = resolve_vanity steamid
+      raise( ArgumentError,  'Not a valid relationship' ) unless %w{ all friend }.include? relationship
+
+      request "/ISteamUser/GetFriendList/v1/?key=#{ self.api_key }&steamid=#{ steamid }&relationship=#{ relationship }"
+    end
+
     protected
 
     def request( uri )
