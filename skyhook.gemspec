@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'skyhook'
-  s.version     = '0.4.0'
+  s.version     = '0.5.0'
   s.date        = '2014-04-28'
   s.summary     = 'Steam API wrapper/library'
   s.description = 'A wrapper/library for the Steam web API'
