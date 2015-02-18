@@ -2,8 +2,6 @@ namespace :test do
 
   # These are to test data return. They do not replace rspec.
 
-  puts 'testing Steam return values'
-
   task :key do
     puts key
   end
