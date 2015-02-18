@@ -1,5 +1,7 @@
 namespace :test do
 
+  # These are to test data return. They do not replace rspec.
+
   task :key do
     puts key
   end
@@ -15,4 +17,5 @@ namespace :test do
   end
 
   task :all => ["test:user", "test:game"]
+
 end
