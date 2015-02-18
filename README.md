@@ -1,16 +1,32 @@
 The Steampowered Skyhook
 ========================
 
-##! Not ready for use yet !
+A wrapper for the Steam web API.
 
-Build
------
-This build just tries to build & install the gem. Nothing else yet.
+## Installation
 
-[![Build Status](https://drone.io/github.com/ClikeX/skyhook_ruby/status.png)](https://drone.io/github.com/ClikeX/skyhook_ruby/latest)
+Add this line to your application's Gemfile:
 
----
+```ruby
+gem 'skyhook'
+```
 
-***The Ruby code has been rewritten, this readme will be updated***
+And then execute:
 
----
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install skyhook
+
+## Usage
+
+TODO: Write usage instructions here
+
+## Contributing
+
+1. Fork it ( https://github.com/[my-github-username]/skyhook/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
