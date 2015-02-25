@@ -22,7 +22,7 @@ module Skyhook
 
       if steamids.empty?
         p 'No steamids were defined'
-        return false
+        return nil
       end
 
       steamids.map! do |steamid|
