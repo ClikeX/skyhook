@@ -1,12 +1,6 @@
 module Skyhook
   class Core < Skyhook::Configuration
 
-    # These are default urls to use with #Service_request
-    RESTAPI = {
-      owned_games: "",
-      shared_games: ""
-    }.freeze
-
     def api_reference
       url = "/ISteamWebAPIUtil/GetSupportedAPIList/v0001/"
 
