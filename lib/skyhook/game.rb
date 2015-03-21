@@ -21,8 +21,10 @@ module Skyhook
 
     def set_user_attributes( response )
       @game_name = response['gameName']
-      @achievements = ( Hash[ response['achievements'].each_slice(2).to_a ] ).deep_symbolize_keys if response['achievements']
-      @stats = ( Hash[ response['stats'].each_slice(2).to_a ] ).deep_symbolize_keys if response['stats']
+
+      @achievements = response['achievements']
+      @stats = response['stats']
+
     end
 
     def set_global_attributes
