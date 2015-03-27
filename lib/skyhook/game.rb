@@ -15,7 +15,7 @@ module Skyhook
           @user = Skyhook::User.new steamid
         end
 
-        set_user_attributes player_stats( appid, user.steamid )['playerstats']
+        set_user_attributes player_stats( appid, @user.steamid )['playerstats']
       end
     end
 
