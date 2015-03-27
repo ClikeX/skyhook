@@ -12,9 +12,12 @@ module Skyhook
     end
 
     def resolve_vanity( vanityurl )
-      return vanityurl if vanityurl.is_a? Integer
       response = request "/ISteamUser/ResolveVanityURL/v0001/?key=#{ self.api_key }&vanityurl=#{ vanityurl }"
-      response["response"]["steamid"].to_i
+      if response["response"]["message"]
+        vanityurl.to_i
+      else
+        response["response"]["steamid"].to_i
+      end
     end
 
     def user_summaries( steamids = [] )
