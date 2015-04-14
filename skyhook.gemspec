@@ -24,10 +24,10 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "bundler", "~> 1.7"
-  s.add_development_dependency 'dotenv', '~> 1.0', '>= 1.0.0'
-  s.add_development_dependency 'rspec', '~> 2.0', '>= 2.0.0'
+  s.add_development_dependency "bundler", "~> 1.9"
+  s.add_development_dependency 'dotenv', '~> 2.0'
   s.add_development_dependency 'rake', '~> 10.0' ,'>= 10.0.0'
+  s.add_development_dependency 'rspec', '~> 3.2'
   s.add_development_dependency 'vcr', '~> 2.9.3'
   s.add_development_dependency 'faraday', '~> 0.9.1'
 
