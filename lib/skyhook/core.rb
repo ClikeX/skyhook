@@ -2,13 +2,30 @@ module Skyhook
   class Core < Skyhook::Configuration
 
     def api_reference
-      url = "/ISteamWebAPIUtil/GetSupportedAPIList/v0001/"
+      url = '/ISteamWebAPIUtil/GetSupportedAPIList/v0001/'
 
       unless @api_key.blank?
         url << "?key=#{ self.api_key }"
       end
 
       request url
+    end
+
+    def server_at_address( ip_address )
+      url = "/ISteamApps/GetServersAtAddress/v1?addr=#{ ip_address }&format=#{self.format}"
+      unless @api_key.blank?
+        url << "&key=#{ self.api_key }"
+      end
+
+      request url
+    end
+
+    def up_to_date_check( appid, version )
+      request "/ISteamApps/UpToDateCheck/v1?key=#{ self.api_key }&appid=#{ appid }&version=#{ version }"
+    end
+
+    def app_list
+      request '/ISteamApps/GetAppList/v2'
     end
 
     def resolve_vanity( vanityurl )
@@ -64,9 +81,7 @@ module Skyhook
     protected
 
     def request( uri )
-      puts "#{BASE}#{uri}" if self.debug
-      response = Net::HTTP.get_response BASE, uri
-      JSON.parse response.body
+      JSON.parse connection.get( uri ).body
     end
 
     def service_request( uri, options = {} )
