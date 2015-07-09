@@ -1,5 +1,5 @@
 require 'active_support/all'
-require 'net/http'
+require 'faraday'
 
 require 'skyhook/configuration'
 require 'skyhook/core'
