@@ -5,15 +5,18 @@ module Skyhook
     # Methods relating to Steam Apps in general.
 
     def self.server_at_address( ip_address )
-      parent.request "/ISteamApps/GetServersAtAddress/v1?addr=#{ ip_address }&format=#{self.format}"
+      response = parent.request '/ISteamApps/GetServersAtAddress/v1', addr: ip_address
+      response['response']['servers']
     end
 
     def self.up_to_date_check( appid, version )
-      parent.request "/ISteamApps/UpToDateCheck/v1?appid=#{ appid }&version=#{ version }"
+      response = parent.request '/ISteamApps/UpToDateCheck/v1', appid: appid, version: version
+      response
     end
 
     def self.app_list
-      parent.request '/ISteamApps/GetAppList/v2'
+      response = parent.request '/ISteamApps/GetAppList/v2'
+      response['applist']['apps']
     end
 
   end
