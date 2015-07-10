@@ -8,15 +8,15 @@ module Skyhook
     attr_reader :loccityid, :locstatecode, :loccountrycode
 
     def initialize( steamid )
-      set_attributes user_summaries( steamid )["response"]["players"][0]
+      set_attributes Skyhook::Core::ISteamUser.user_summaries( steamid ).first
     end
 
     def game( appid )
-      Skyhook::Game.new appid, self
+      Skyhook::Game.new( appid, self )
     end
 
-    def friends( relationship = 'friend' )
-      @friends ||= friend_list @steamid, relationship
+    def friends( relationship = :all )
+      @friends ||= Skyhook::Core::ISteamUser.friend_list @steamid, relationship.to_s
     end
 
     private
@@ -41,6 +41,5 @@ module Skyhook
       @locstatecode = response["locstatecode"]
       @loccityid = response["loccityid"]
     end
-
   end
 end
