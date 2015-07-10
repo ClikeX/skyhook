@@ -16,14 +16,5 @@ module Skyhook
       @@api_key = options[:api_key] if options[:api_key]
       @@debug = options[:debug] if options[:debug]
     end
-
-    def connection
-      Faraday.new(:url => 'http://api.steampowered.com') { |faraday|
-          faraday.request  :url_encoded             # form-encode POST params
-          faraday.response :logger                  # log requests to STDOUT
-          faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-        }
-    end
-
   end
 end
