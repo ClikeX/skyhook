@@ -5,6 +5,10 @@ module Skyhook
       request '/ISteamWebAPIUtil/GetSupportedAPIList/v0001/'
     end
 
+    def self.server_info
+      request '/ISteamWebAPIUtil/GetServerInfo/v0001/'
+    end
+
     protected
 
     def self.request( uri, params = {} )
