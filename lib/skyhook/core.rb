@@ -21,6 +21,9 @@ module Skyhook
         req.params['key'] = self.api_key if self.api_key
 
         params.each do |param, value|
+          value = (value.is_a? TrueClass) ? "'true'" : value
+          value = (value.is_a? FalseClass) ? "'false'" : value
+
           req.params[param] = value
         end unless params.empty?
       end
