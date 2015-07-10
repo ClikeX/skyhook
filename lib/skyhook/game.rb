@@ -15,7 +15,7 @@ module Skyhook
           @user = Skyhook::User.new steamid
         end
 
-        set_user_attributes player_stats( appid, @user.steamid )['playerstats']
+        set_user_attributes Skyhook::Core::ISteamUserStats.player_stats( appid, @user.steamid )
       end
     end
 
@@ -24,13 +24,12 @@ module Skyhook
 
       @achievements = response['achievements']
       @stats = response['stats']
-
+      @user.games= self
     end
 
     def set_global_attributes
       #Will return a games global stats
       raise NotImplementedError
     end
-
   end
 end
