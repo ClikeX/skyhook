@@ -33,14 +33,9 @@ module Skyhook
       end
     end
 
-    def self.server_info
-      request '/ISteamWebAPIUtil/GetServerInfo/v0001/'
-    end
-
     protected
 
     def self.request( uri, params = {} )
-      # uri << "&key=#{ self.api_key }" if self.api_key
       conn = Faraday.new(:url => 'http://api.steampowered.com') do |faraday|
           faraday.request  :url_encoded             # form-encode POST params
           faraday.response :logger                  # log requests to STDOUT
@@ -61,12 +56,6 @@ module Skyhook
       end
 
       JSON.parse response.body
-
-    end
-
-    def service_request( uri, options = {} )
-      raise( ArgumentError,  'No JSON options were supplied' ) if options.empty?
-      request "#{ uri }?key=#{ self.api_key }}&format=#{ self.format }&input_json=#{ options[:json]} "
     end
   end
 end
