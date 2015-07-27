@@ -2,7 +2,35 @@ module Skyhook
   class Core < Skyhook::Configuration
 
     def self.api_reference
-      request '/ISteamWebAPIUtil/GetSupportedAPIList/v0001/'
+      request '/ISteamWebAPIUtil/GetSupportedAPIList/v1/'
+    end
+
+    def self.get_method(method_name)
+      api_reference['apilist']['interfaces'].each do |interface|
+
+        if meth = interface['methods'].find { |method|method['name'] == method_name }
+          meth['interface'] = interface['name']
+          return meth
+        else
+          nil
+        end
+      end
+    end
+
+    def self.method_missing(m, params = {})
+      if method = get_method( m.to_s.camelize )
+        url = "/#{ method['interface'] }/#{ method['name'] }/v#{ method['version'] }/"
+
+        self.class.class_eval do
+          define_method m do |params|
+            request( "#{url}", params )
+          end
+        end
+
+        send(m, params)
+      else
+        super
+      end
     end
 
     def self.server_info
