@@ -1,9 +1,12 @@
+[![Code Climate](https://codeclimate.com/github/ClikeX/skyhook/badges/gpa.svg)](https://codeclimate.com/github/ClikeX/skyhook)
+
 The Steampowered Skyhook
 ========================
 
 A wrapper for the Steam web API.
 
-## Installation
+Installation
+------------
 
 Add this line to your application's Gemfile:
 
@@ -13,20 +16,26 @@ gem 'skyhook'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install skyhook
+```
+$ gem install skyhook
+```
 
-## Usage
+Usage
+-----
 
 TODO: Write usage instructions here
 
-## Contributing
+Contributing
+------------
 
-1. Fork it ( https://github.com/ClikeX/skyhook/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+1.	Fork it ( https://github.com/ClikeX/skyhook/fork )
+2.	Create your feature branch (`git checkout -b my-new-feature`\)
+3.	Commit your changes (`git commit -am 'Add some feature'`\)
+4.	Push to the branch (`git push origin my-new-feature`\)
+5.	Create a new Pull Request
