@@ -1,5 +1,11 @@
 [![Code Climate](https://codeclimate.com/github/ClikeX/skyhook/badges/gpa.svg)](https://codeclimate.com/github/ClikeX/skyhook)
 
+:warning: This codebase is no longer maintained :warning:
+===
+
+Due to lack of time (and interest in using Steam's API) I no longer maintain this wrapper.
+
+
 The Steampowered Skyhook
 ========================
 
